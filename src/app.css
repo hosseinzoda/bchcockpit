@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+h1.x {
+  @apply mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-gray-300;
+}
+
+h2.x {
+  @apply mb-3 text-2xl font-extrabold leading-none tracking-tight text-gray-800 dark:text-gray-400;
+}
+
+h3.x {
+  @apply mb-3 text-xl font-extrabold leading-none tracking-tight text-gray-800 dark:text-gray-400;
+}
+
+input.x-text-input {
+  @apply block p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+
+select.x {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+
+button.x,
+a.x-button {
+  @apply cursor-pointer px-4 py-2 text-sm font-medium border border-gray-100 rounded-md
+    text-blue-700 bg-white hover:bg-gray-100 hover:text-cyan-700
+    dark:text-blue-400 dark:bg-gray-800 dark:border-gray-700 
+    dark:hover:text-white dark:hover:bg-gray-700
+    dark:focus:ring-blue-500 dark:focus:text-white
+    disabled:text-gray-400 dark:disabled:text-gray-700;
+}
+
+dl.x > dt {
+  @apply font-bold text-gray-800 dark:text-gray-200;
+}
+
+dl.x > dd {
+  @apply ms-5 font-medium text-gray-700 dark:text-gray-300;
+}
+
+button.x-icon,
+a.x-button-icon  {
+  @apply w-10 h-10 flex items-center justify-center cursor-pointer font-medium rounded-full
+    text-gray-800 bg-white hover:bg-gray-100 hover:text-gray-700
+    dark:text-gray-200 dark:bg-gray-800 dark:hover:text-white dark:hover:bg-gray-700
+    dark:focus:ring-blue-500 dark:focus:text-white
+    disabled:text-gray-400 dark:disabled:text-gray-700;
+}
+
+button.x-icon.x-primary,
+a.x-button-icon.x-primary  {
+  @apply
+    text-blue-700 hover:text-cyan-600
+    dark:text-blue-400 dark:hover:text-cyan-300
+    disabled:text-gray-400 dark:disabled:text-gray-700;
+}
+
+button.x-icon.x-sm,
+a.x-button-icon.x-sm  {
+  @apply w-6 h-6 text-sm;
+}
+
+.x-verified-symbol {
+  @apply text-green-600 dark:text-green-400;
+}
+.x-unverified-symbol {
+  @apply text-orange-400;
+}
+.x-token-icon > img,
+.x-pool-pair-icon > img {
+  width: 20px;
+  height: 20px;
+}
+.x-pool-pair-icon {
+  display: flex;
+  flex-direction: row;
+}
+.x-pool-pair-icon .secondary {
+  margin-left: -7px;
+}
+.x-pool-pair-symbols {
+  @apply font-mono;
+}
+.x-token-name {
+  @apply font-medium;
+}
+.x-token-id {
+  @apply font-mono overflow-hidden text-ellipsis inline-block;
+  max-width: 100%;
+}
+.x-token-amount {
+  @apply font-mono pe-2;
+}
+.x-token-symbol {
+  @apply font-mono font-bold text-gray-800 dark:text-gray-300;
+}
+.x-amount {
+
+}
+.x-token-explorer-link {
+  @apply m-1 text-blue-700 dark:text-blue-400;
+}
+.x-token-webpage-link {
+  @apply m-1 text-blue-800 dark:text-blue-300;
+}
+.x-cashaddr-text {
+  @apply font-mono inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
