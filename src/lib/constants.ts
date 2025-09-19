@@ -24,3 +24,6 @@ export const DEFAULT_TX_FEE_PER_BYTE = {
 };
 
 export const DEFAULT_PREFERRED_TOKEN_OUTPUT_BCH_AMOUNT = 800n;
+
+export const DEFAULT_BIP39_DERIVATION_PATH = `m/44'/145'/0'`;
+

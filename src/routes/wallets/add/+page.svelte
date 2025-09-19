@@ -9,6 +9,7 @@
   } from '@cashlab/common/libauth.js';
   import * as app_navigation from '$app/navigation';
   import { pagePathToLink } from '$lib/app-path-helpers.js';
+  import { DEFAULT_BIP39_DERIVATION_PATH } from '$lib/constants.js';
 
   const main: MainContext = getContext('main');
 
@@ -18,7 +19,7 @@
     wif: '',
     address: '',
     seed_word_count: 12,
-    derivation_path: "m/44'/0'/0'", // default derivation path
+    derivation_path: DEFAULT_BIP39_DERIVATION_PATH,
     is_with_passphrase: false,
     passphrase: '',
   });
