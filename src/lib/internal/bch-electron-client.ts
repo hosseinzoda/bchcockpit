@@ -135,6 +135,7 @@ export class BCHElectronClientRuntime implements BCHElectronClient {
     this.electrum_client = new ElectrumClient('electrum-cash', '1.4.3', this.electrum_web_socket, {
       disableBrowserVisibilityHandling: true,
       disableBrowserConnectivityHandling: true,
+      sendKeepAliveIntervalInMilliSeconds: 30 * 1000,
     });
     this.electrum_client.addListener('notification', this.onElectrumNotification);
 		this.electrum_client.addListener('disconnected', this.onElectrumDisconnected);
