@@ -1,1 +1,1 @@
-<h1>Welcome to cauldron fallback tool.</h1>
+<h1>Welcome to the BCH-Cockpit!</h1>

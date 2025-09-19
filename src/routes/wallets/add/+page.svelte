@@ -139,6 +139,10 @@
   };
 </script>
 
+<div class="flex flex-row items-center mb-2" role="group">
+  <button class="x-icon x-secondary" aria-label="Back" onclick={() => history.back()}><i class="fa-solid fa-arrow-left"></i></button>
+</div>
+
 <h1 class="x">Add Wallet</h1>
 <input class="x-text-input w-full mb-4" required type="name" bind:value={input.name} placeholder="Choose a name for the wallet" />
 <select class="x w-full mb-4" required bind:value={input.type}>

@@ -1,11 +1,14 @@
 <script lang="ts">
+  import LoadingSpinner from '$lib/components/LoadingSpinner.svelte';
+
   import { getContext } from 'svelte';
   import type { MainContext } from '$lib/main.svelte.ts';
   import { tokenDecimalAmount, sanitizeExternalTokenText } from '$lib/helpers.js';
   import { ValueError } from '@cashlab/common/exceptions.js';
   import { NATIVE_BCH_TOKEN_ID } from '@cashlab/common';
   import { page } from '$app/stores';
-  import LoadingSpinner from '$lib/components/LoadingSpinner.svelte';
+  import * as app_navigation from '$app/navigation';
+  import { pagePathToLink } from '$lib/app-path-helpers.js';
 
   const main: MainContext = getContext('main');
 
@@ -19,7 +22,15 @@
   const onReloadTokenIdentity = (token_id: string): void => {
     main.reloadTokenIdentity(token_id);
   };
+  const onClickDelete = (): void => {
+    app_navigation.goto(pagePathToLink('/wallets/delete/' + wallet.value.id));
+  };
 </script>
+
+<div class="flex flex-row items-center mb-2" role="group">
+  <button class="x-icon x-secondary" aria-label="Back" onclick={() => history.back()}><i class="fa-solid fa-arrow-left"></i></button>
+</div>
+
 {#if main.state.wallets_ready }
 <div>
   {#if wallet == null }
@@ -30,15 +41,23 @@
       <dt>Name: </dt>
       <dd>{ wallet.value.name }</dd>
       <dt>Status</dt>
-      <dd>
+      <dd class="mb-3">
         <span class="me-3">{ wallet.value.enabled ? 'Enabled' : 'Disabled' }</span>
-        <button type="button" class="x" aria-label={wallet.value.enabled ? 'Enable' : 'Disable'} onclick={onToggleStatus}>
-        {#if wallet.value.enabled }
-          Disable
-        {:else}
-          Enable
-        {/if}
-        </button>
+        <div class="flex flex-row mt-2">
+          <button type="button" class="x me-4 x-primary" onclick={onToggleStatus}>
+            {#if wallet.value.enabled }
+            Disable
+            {:else}
+            Enable
+            {/if}
+          </button>
+
+          {#if !wallet.value.enabled }
+          <button type="button" class="x x-danger" onclick={onClickDelete}>
+            Delete
+          </button>
+          {/if}
+        </div>
       </dd>
       {#if wallet.state }
       <dt>UTXO Set size: </dt>
