@@ -1,4 +1,4 @@
-<script lang="ts">
+  <script lang="ts">
   import LoadingSpinner from '$lib/components/LoadingSpinner.svelte';
 
   import { getContext } from 'svelte';
@@ -7,6 +7,7 @@
   import type { Wallet } from '$lib/types.js';
   import type { PairPoolItemExtended, CauldronV0PoolsContext } from './types.js';
   import { page } from '$app/stores';
+  import { pageURLFromLink, pagePathToLink } from '$lib/app-path-helpers.js';
 
   import {
     InvalidProgramState, ValueError, NATIVE_BCH_TOKEN_ID,
@@ -84,9 +85,9 @@
   const onClickConfirm = function (event: MouseEvent): void {
     const onSent = () => {
       addInteractionResponseToast(event, { message: 'Sent!', type: 'success' })
-      const loc_url = new URL(location+'');
-      const query = Array.from(loc_url.searchParams.entries());
-      app_navigation.goto('/cauldron-v0-pools' + (query.length > 0 ? '?' + query.map((a) => encodeURIComponent(a[0]) + '=' + encodeURIComponent(a[1])).join('&') : ''));
+      const page_url = pageURLFromLink(location);
+      const query = Array.from(page_url.searchParams.entries());
+      app_navigation.goto(pagePathToLink('/cauldron-v0-pools' + (query.length > 0 ? '?' + query.map((a) => encodeURIComponent(a[0]) + '=' + encodeURIComponent(a[1])).join('&') : '')));
     };
     if (this.disabled) {
       return;

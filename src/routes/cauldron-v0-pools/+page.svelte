@@ -6,7 +6,8 @@
   import { getContext } from 'svelte';
   import type { MainContext } from '$lib/main.svelte.ts';
   import type { PairPoolItemExtended, CauldronV0PoolsContext } from './types.js';
-
+  import { pageURLFromLink, pagePathToLink, stripBaseFromPath } from '$lib/app-path-helpers.js';
+  
   import { 
     InvalidProgramState, NATIVE_BCH_TOKEN_ID,
   } from '@cashlab/common';
@@ -42,9 +43,10 @@
   });
 
   const onClickWithdraw = (pair_item: PairPoolItemExtended): void => {
+    const page_url = pageURLFromLink(location);
     const token_id = pair_item.pair_token.token_id;
-    const query = Array.from($page.url.searchParams.entries());
-    app_navigation.goto($page.url.pathname + '/withdraw/' + token_id + (query.length > 0 ? '?' + query.map((a) => encodeURIComponent(a[0]) + '=' + encodeURIComponent(a[1])).join('&') : ''));
+    const query = Array.from(page_url.searchParams.entries());
+    app_navigation.goto(pagePathToLink(stripBaseFromPath(page_url.pathname + '/withdraw/' + token_id + (query.length > 0 ? '?' + query.map((a) => encodeURIComponent(a[0]) + '=' + encodeURIComponent(a[1])).join('&') : ''))));
   };
   const onReloadTokenIdentity = (token_id: string): void => {
     main.reloadTokenIdentity(token_id);

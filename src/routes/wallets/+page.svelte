@@ -1,6 +1,7 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import type { MainContext } from '$lib/main.svelte.ts';
+  import { resolve } from '$lib/app-path-helpers.js';
   const main: MainContext = getContext('main');
 
   const wallets = main.state.wallets;
@@ -8,7 +9,7 @@
 {#if main.state.wallets_ready }
 <div class="flex flex-row flex-wrap items-center p-2 place-content-end">
   <div class="inline-flex" role="group">
-    <a class="x-button-icon x-primary" href="/wallets/add" aria-label="Add"><i class="fa-solid fa-plus"></i></a>
+    <a class="x-button-icon x-primary" href={resolve('/wallets/add')} aria-label="Add"><i class="fa-solid fa-plus"></i></a>
   </div>
 </div>
 
@@ -53,7 +54,7 @@
         {/if}
         </td>
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white">
-          <a class="text-blue-700 dark:text-blue-400" href={'/wallets/view/' + wallet.value.id }>{ wallet.value.name }</a>
+          <a class="text-blue-700 dark:text-blue-400" href={resolve('/wallets/view/' + wallet.value.id)}>{ wallet.value.name }</a>
         </th>
         <td class="text-center">
           {#if wallet.state != null }

@@ -1,4 +1,5 @@
 import type { TokenIdentity } from './types.js';
+import { asset } from '$lib/app-path-helpers.js';
 
 export const getNativeBCHTokenIdentity = (): TokenIdentity => {
   return {
@@ -7,7 +8,7 @@ export const getNativeBCHTokenIdentity = (): TokenIdentity => {
     name: 'Bitcoin Cash',
     symbol_text: 'BCH',
     decimals: 8,
-    icon_url: '/assets/bch-circle.svg',
+    icon_url: asset('/assets/bch-circle.svg'),
   };
 };
 
@@ -32,3 +33,5 @@ export const bigIntToDecString = (value: bigint, decimals: number): string => {
 export const sanitizeExternalTokenText = (s: string): string => {
   return s.replace(/[^a-z\s0-9\-\_]/ig, '');
 };
+
+

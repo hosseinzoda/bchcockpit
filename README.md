@@ -105,7 +105,7 @@ Distributed under the MIT license. See `LICENSE.txt` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[cft-github-page-url]: https://github.com/
+[cft-github-page-url]: https://hosseinzoda.github.io/bchcockpit/
 [libauth-url]: https://libauth.org/
 [electrum-cash-url]: https://gitlab.com/electrum-cash/network/
 [cashlab-url]: https://github.com/hosseinzoda/cashlab

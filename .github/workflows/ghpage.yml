@@ -2,6 +2,9 @@ name: Deploy github pages
 on:
   push:
     branches: [ "main" ]
+env:
+  PUBLIC_USE_HASH_ROUTER: 1
+  PUBLIC_BASE_PATH: /bchcockpit
 jobs:
   # Build job
   build:

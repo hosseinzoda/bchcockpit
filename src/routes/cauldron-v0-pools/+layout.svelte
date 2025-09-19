@@ -10,6 +10,7 @@
   import type {
     PoolOwnerInfo, PoolTrackingItem, PoolUTXOItem, PairPoolItem, CauldronV0PoolsContext,
   } from './types.js';
+  import { resolve, pageURLFromLink, pagePathToLink, stripBaseFromPath } from '$lib/app-path-helpers.js';
 
 
   import { 
@@ -66,8 +67,8 @@
     filters_all_wallets_selected = true;    
   };
   const replacePageQuery = (query) => {
-    const page_url = new URL(location+'');
-    app_navigation.replaceState(page_url.pathname + (query.length > 0 ? '?' + query.map((a) => encodeURIComponent(a[0]) + '=' + encodeURIComponent(a[1])).join('&') : ''), {});
+    const page_url = pageURLFromLink(location);
+    app_navigation.replaceState(pagePathToLink(stripBaseFromPath(page_url.pathname + (query.length > 0 ? '?' + query.map((a) => encodeURIComponent(a[0]) + '=' + encodeURIComponent(a[1])).join('&') : ''))), {});
   };
   type FiltersQuery = {
     wallets: string[],
@@ -88,7 +89,7 @@
       setTimeout(() => {
         let input_filters_query = null;
         try {
-          const page_url = new URL(location+'');
+          const page_url = pageURLFromLink(location);
           input_filters_query = JSON.parse(atob(page_url.searchParams.get('filters')));
         } catch (err) {
           // pass
@@ -116,7 +117,7 @@
   // update page query if needed
   $effect(() => {
     if (filters_ready) {
-      const page_url = new URL(location+'');
+      const page_url = pageURLFromLink(location+'');
       let url_filters_query = null;
       try {
         url_filters_query = JSON.parse(atob(page_url.searchParams.get('filters')));

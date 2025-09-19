@@ -7,7 +7,9 @@
     deriveHdPrivateNodeFromBip39Mnemonic, deriveHdPath,
     decodeCashAddress, publicKeyToP2pkhLockingBytecode,
   } from '@cashlab/common/libauth.js';
-  import * as appNav from '$app/navigation';
+  import * as app_navigation from '$app/navigation';
+  import { pagePathToLink } from '$lib/app-path-helpers.js';
+
   const main: MainContext = getContext('main');
 
   const input = $state({
@@ -120,7 +122,7 @@
         }
       }
       main.wallet_store.addWallet(wallet);
-      appNav.goto('/wallets');
+      app_navigation.goto(pagePathToLink('/wallets'));
     } catch (err) {
       if (err instanceof ValueError) {
         error = err.message;

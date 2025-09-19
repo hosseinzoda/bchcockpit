@@ -3,6 +3,7 @@
   import { setContext } from 'svelte';
   import { createMainContext } from '$lib/main.svelte.ts';
   import { page } from '$app/stores';
+  import { asset, resolve } from '$lib/app-path-helpers.js';
 
   const main = createMainContext();
   setContext('main', main);
@@ -11,22 +12,21 @@
   const nav_items = [
     {
       label: 'Wallets',
-      href: '/wallets',
+      href: resolve('/wallets'),
     },
     
     {
       label: 'Pools',
-      href: '/cauldron-v0-pools',
+      href: resolve('/cauldron-v0-pools'),
     },
     {
       label: 'About',
-      href: '/about',
+      href: resolve('/about'),
     },
   ];
 </script>
 
 <svelte:head>
-  <title>BCH-Cockpit</title>
 </svelte:head>
 
 <style>
@@ -74,7 +74,7 @@
 <div class="container mx-auto px-4 py-4 max-w-md">
   <div class="flex flex-wrap flex-row text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
     <nav class="main-nav flex flex-row items-center gap-1">
-      <a class="rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300 mr-3" href="/"><img src="/favicon-192x192.png" alt="BCH-Cockpit" width="48" height="48" /></a>
+      <a class="rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300 mr-3" href={resolve('/')}><img src={asset('/favicon-192x192.png')} alt="BCH-Cockpit" width="48" height="48" /></a>
       {#each nav_items as nav_item (nav_item.href)}
         <a {...(($page.route.id||'').startsWith(nav_item.href) ? {'aria-current': 'page', class: 'p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500'} : { class: 'p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300' })}href={nav_item.href}>{ nav_item.label }</a>
       {/each}
