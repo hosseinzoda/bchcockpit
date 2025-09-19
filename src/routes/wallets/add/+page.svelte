@@ -19,6 +19,8 @@
     address: '',
     seed_word_count: 12,
     derivation_path: "m/44'/0'/0'", // default derivation path
+    is_with_passphrase: false,
+    passphrase: '',
   });
   let input_seed = $state([]);
   $effect(() => input_seed = new Array(input.seed_word_count).map(() => ''));
@@ -98,8 +100,9 @@
           }
           try {
             // test the hd wallet
+            const passphrase = input.is_with_passphrase ? input.passphrase : undefined;
             const seed_phrase = input_seed.join(' ');
-            const node = deriveHdPrivateNodeFromBip39Mnemonic(seed_phrase);
+            const node = deriveHdPrivateNodeFromBip39Mnemonic(seed_phrase, { passphrase });
             const zeroth_key = assertSuccess(deriveHdPath(node, input.derivation_path + '/0/0')).privateKey;
             const zeroth_public_key = assertSuccess(secp256k1.derivePublicKeyCompressed(zeroth_key));
             const zeroth_locking_bytecode = assertSuccess(publicKeyToP2pkhLockingBytecode({ publicKey: zeroth_public_key }));
@@ -109,6 +112,9 @@
               name: input.name,
               enabled: true,
               seed: seed_phrase,
+              ...Object.fromEntries([
+                [ 'passphrase', passphrase ],
+              ].filter((a) => a[1] != null)) as { passphrase?: string },
               derivation_path: input.derivation_path,
             };
           } catch (err) {
@@ -139,7 +145,7 @@
   <option value={null}>Select a type</option>
   <option value="p2pkh">P2PKH</option>
   <option value="p2pkh-watch">P2PKH-Watch</option>
-  <option value="hd">Seed (hd-wallet)</option>
+  <option value="hd">Seed (hd-wallet bip39)</option>
 </select>
 {#if input.type === 'p2pkh'}
   <input required type="wif" class="x-text-input mb-4" bind:value={input.wif} placeholder="wif formatted private key" autocomplete="off" autocorrect="off" autocapitalize="off" />
@@ -165,6 +171,20 @@
       <input id="add-wallet-derivation-path" required type="derivation-path" class="x-text-input !inline-block" bind:value={input.derivation_path} autocomplete="off" autocorrect="off" autocapitalize="off" />
     </label>
   </div>
+  <div class="mb-2">
+    <label for="add-wallet-is-with-passphrase">
+      <input type="checkbox" bind:checked={input.is_with_passphrase} />
+      With passphrase
+    </label>
+  </div>
+  {#if input.is_with_passphrase }
+  <div class="mb-4">
+    <label for="add-wallet-passphrase">
+      <span class="inline-block mr-2">Passphrase:</span>
+      <input id="add-wallet-passphrase" required type="passphrase" class="x-text-input !inline-block" bind:value={input.passphrase} autocomplete="off" autocorrect="off" autocapitalize="off" />
+    </label>
+  </div>
+  {/if}
 {/if}
 {#if error}
   <p class="my-3 text-sm text-red-600 dark:text-red-500 font-medium">Error: {error}</p>

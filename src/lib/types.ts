@@ -21,6 +21,7 @@ export type P2PKHWatchWallet = WalletBase &  {
 export type HdWallet = WalletBase & {
   type: 'hd';
   seed: string;
+  passphrase?: string;
   derivation_path: string;
 };
 

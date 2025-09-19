@@ -295,7 +295,7 @@ export class HdWalletStateManager extends WalletStateManager {
       if (['hd'].indexOf(this.wallet.type) === -1) {
         throw new ValueError(`wallet type is expected to be "hd", got: ${this.wallet.type}`);
       }
-      this.node = deriveHdPrivateNodeFromBip39Mnemonic(this.wallet.seed);
+      this.node = deriveHdPrivateNodeFromBip39Mnemonic(this.wallet.seed, { passphrase: this.wallet.passphrase });
     } catch (err) {
       console.warn('wallet state init fail, wallet_name: ', this.wallet.name, err);
       this.state_proxy.error.set(`${(err as any).name}: ${(err as any).message}`);
