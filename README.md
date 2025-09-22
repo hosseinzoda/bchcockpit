@@ -4,14 +4,14 @@
 <br />
 <div align="center">
   <a href="https://github.com/hosseinzoda/bchcockpit">
-    <img src="src/assets/icon.png" alt="BCH-Cockpit" width="80" height="80">
+    <img src="static/favicon-192x192.png" alt="BCH-Cockpit" width="80" height="80">
   </a>
 
   <h3 align="center">BCH-Cockpit</h3>
 
   <p align="center">
-    Starting as an alternative to cauldron app, It's designed to help users withdraw their funds in case it goes down.
-    <br />
+    Starting as an alternative to cauldron app withdraw your capital from cauldron pools. <br />
+    <a href="https://hosseinzoda.github.io/bchcockpit/">Open BCH-Cockpit hosted by github pages</a>
   </p>
 </div>
 
@@ -41,32 +41,33 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![BCH-Cockpit][product-screenshot]][cft-github-page-url]
-
-An alternative tool built for when/if cauldron goes offline. The current only allows users to discover & withdraw their pools.
+An alternative tool built for when/if cauldron goes offline. Discover & withdraw your cauldron pools.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
-* [![@bitauth/libauth]][libauth-url]
-* [![@electrum-cash/network]][electrum-cash-url]
-* [![@cashlab/cauldron]][cashlab-url]
-* [![@cashlab/common]][cashlab-url]
-* [![svelte][svelte-icon]][svelte-url]
-* [![tailwind][tailwind-icon]][tailwind-url]
-* [![fontawesome][fontawesome-icon]][fontawesome-url]
+* [@bitauth/libauth][libauth-url]
+* [@electrum-cash/network][electrum-cash-url]
+* [@cashlab/cauldron][cashlab-url]
+* [@cashlab/common][cashlab-url]
+* [typescript][typescript-url]
+* [svelte][svelte-url]
+* [vite][vite-url]
+* [tailwind][tailwind-url]
+* [fontawesome][fontawesome-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Using the prebuilt version on [[github pages]][cft-github-page-url] is the easiest method to access the app.
+Using the prebuilt version on [github pages][cft-github-page-url] is the easiest way to access the app.
 
 The following is the build instructions of the app. Build & self-host the app if you prefer to do so.
 
 ### Prerequisites
+
 
 The build system needs to install node.js & npm.
 
@@ -86,9 +87,8 @@ The build system needs to install node.js & npm.
    ```
 
 3. Run a self-hosted web-server (optional)
-   Alternatively, You can use your own web server to host the app.
    ```sh
-   
+   npm run start
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -109,7 +109,10 @@ Distributed under the MIT license. See `LICENSE.txt` for more information.
 [libauth-url]: https://libauth.org/
 [electrum-cash-url]: https://gitlab.com/electrum-cash/network/
 [cashlab-url]: https://github.com/hosseinzoda/cashlab
+[typescript-url]: https://www.typescriptlang.org/
 [svelte-url]: https://svelte.dev/
+[vite-url]: https://vite.dev/
 [tailwind-url]: https://tailwindcss.com/
 [fontawesome-url]: https://fontawesome.com/
 <!-- [product-screenshot]: images/screenshot.png -->
+
