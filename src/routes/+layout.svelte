@@ -37,7 +37,7 @@
   background-color: light-grey;
 }
 .client-status.status-connected {
-  background-color: green;
+  background-color: var(--primary-green);
 }
 .client-status.status-connecting {
   background-color: orange;

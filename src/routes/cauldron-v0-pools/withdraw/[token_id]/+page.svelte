@@ -295,7 +295,7 @@
     {#if deposit_wallet && deposit_wallet.type === 'hd' }
     <div class="ps-2">
       <label>
-        <input type="checkbox" bind:checked={deposit_wallet_zeroth_index} />
+        <input class="x" type="checkbox" bind:checked={deposit_wallet_zeroth_index} />
         Use hd wallet&apos;s zeroth index
       </label>
     </div>

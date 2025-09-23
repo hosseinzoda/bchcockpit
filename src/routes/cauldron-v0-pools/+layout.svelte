@@ -462,12 +462,12 @@
       <div class="font-semibold pb-2">Wallets:</div>
       <div class="flex flex-row flex-wrap mx-1 max-h-21 overflow-hidden overflow-y-auto items-center">
         <div class="flex items-center p-1 me-2">
-          <input bind:checked={filters_all_wallets_selected} onchange={didClickSelectAllWalletsCheckbox} id="filters-wallet--all" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <input bind:checked={filters_all_wallets_selected} onchange={didClickSelectAllWalletsCheckbox} id="filters-wallet--all" type="checkbox" class="x w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
           <label for="filters-wallet--all" class="ms-1 text-sm font-medium text-gray-900 dark:text-gray-300">All Wallets</label>
         </div>
         {#each main.state.wallets.filter((a) => a.value.enabled) as wallet (wallet.value.id) }
         <div class="flex items-center p-1 me-2">
-          <input bind:checked={ctxstate.filters.wallets[wallet.value.id]} onchange={didClickFilterWalletCheckbox} value={true} id={'filters-wallet-' + wallet.value.id} type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <input bind:checked={ctxstate.filters.wallets[wallet.value.id]} onchange={didClickFilterWalletCheckbox} value={true} id={'filters-wallet-' + wallet.value.id} type="checkbox" class="x w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
           <label for={'filters-wallet-' + wallet.value.id} class="ms-1 text-sm font-medium text-gray-900 dark:text-gray-300">
             {#if wallet.value.type.indexOf('watch') === -1 }
               <i class="fa-solid fa-key"></i>

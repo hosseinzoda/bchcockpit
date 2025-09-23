@@ -178,7 +178,7 @@
   </div>
   <div class="mb-2">
     <label for="add-wallet-is-with-passphrase">
-      <input type="checkbox" bind:checked={input.is_with_passphrase} />
+      <input class="x" type="checkbox" bind:checked={input.is_with_passphrase} />
       With passphrase
     </label>
   </div>

@@ -1,6 +1,10 @@
 @import 'tailwindcss';
 @import '@fortawesome/fontawesome-free/css/all.css';
 
+:root {
+  --primary-green: #0AC18E;
+}
+
 h1.x {
   @apply mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-gray-300;
 }
@@ -88,8 +92,12 @@ a.x-button-icon.x-sm  {
   @apply w-6 h-6 text-sm;
 }
 
+input.x[type=checkbox] {
+  accent-color: var(--primary-green);
+}
+
 .x-verified-symbol {
-  @apply text-green-600 dark:text-green-400;
+  color: var(--primary-green);
 }
 .x-unverified-symbol {
   @apply text-orange-400;
