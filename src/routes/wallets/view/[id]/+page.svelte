@@ -52,11 +52,9 @@
             {/if}
           </button>
 
-          {#if !wallet.value.enabled }
           <button type="button" class="x x-danger" onclick={onClickDelete}>
             Delete
           </button>
-          {/if}
         </div>
       </dd>
       {#if wallet.state }
@@ -90,7 +88,7 @@
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
             <td class="px-2 py-1 w-40">
               {#if balance.token_identity.value }
-              <div class="flex flex-row">
+              <div class={['flex flex-row', balance.token_identity.value.is_native_token ? 'x-is-native-token' : '']}>
                   <span class="me-2">
                     {#if balance.token_identity.value.verified === true }
                     <i class="x-verified-symbol fa-solid fa-check"></i>
