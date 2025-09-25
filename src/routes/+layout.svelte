@@ -13,15 +13,18 @@
     {
       label: 'Wallets',
       href: resolve('/wallets'),
+      id: '/wallets',
     },
     
     {
       label: 'Pools',
       href: resolve('/cauldron-v0-pools'),
+      id: '/cauldron-v0-pools',
     },
     {
       label: 'About',
       href: resolve('/about'),
+      id: '/about',
     },
   ];
 </script>
@@ -72,11 +75,11 @@
 </style>
 
 <div class="container mx-auto px-4 py-4 max-w-md">
-  <div class="flex flex-wrap flex-row text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
+  <div class="flex flex-wrap flex-row text-sm font-medium text-center text-gray-800 border-b border-gray-200 dark:border-gray-700 dark:text-gray-100">
     <nav class="main-nav flex flex-row items-center gap-1">
-      <a class="rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300 mr-3" href={resolve('/')}><img src={asset('/favicon-192x192.png')} alt="BCH-Cockpit" width="48" height="48" /></a>
+      <a class="rounded-t-lg mr-3" href={resolve('/')}><img src={asset('/favicon-192x192.png')} alt="BCH-Cockpit" width="48" height="48" /></a>
       {#each nav_items as nav_item (nav_item.href)}
-        <a {...(($page.route.id||'').startsWith(nav_item.href) ? {'aria-current': 'page', class: 'p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500'} : { class: 'p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300' })}href={nav_item.href}>{ nav_item.label }</a>
+        <a {...(($page.route.id||'').startsWith(nav_item.id) ? {'aria-current': 'page', class: 'p-4 text-blue-700 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-400'} : { class: 'p-4 rounded-t-lg hover:bg-gray-50 dark:hover:bg-gray-800' })}href={nav_item.href}>{ nav_item.label }</a>
       {/each}
     </nav>
     <div class="flex-grow-1"></div>
